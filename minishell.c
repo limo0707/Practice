@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 #define MAX_CMD_LEN 100 // 명령어 최대 길이
-#define MAX_ARGS 10     // 옵션 최대 개수
+#define MAX_ARGS 10 // 옵션 최대 개수
 
 // 함수 선언
 void print_prompt();
@@ -102,3 +102,4 @@ void execute_command(char** args, int arg_count) {
         printf("'%s'은(는) 알 수 없는 명령어입니다. 'help'를 입력해보세요.\n", args[0]);
     }
 }
+
