@@ -29,7 +29,7 @@ int main() {
         if (arg_count == 0) continue; // 입력이 없으면 다시 루프
 
         if (strcmp(args[0], "exit") == 0) {
-            printf("쉘을 종료합니다. 안녕히 가세요!\n");
+            printf("쉘을 종료합니다\n");
             break;
         }
         execute_command(args, arg_count);
