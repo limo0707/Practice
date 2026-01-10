@@ -4,9 +4,9 @@
 
 // 학생 데이터를 담을 구조체 정의
 typedef struct Student {
-    int id;             // 학번
-    char name[50];      // 이름
-    float score;        // 학점
+    int id; // 학번
+    char name[50]; // 이름
+    float score; // 학점
     struct Student* next; // 다음 학생을 가리키는 포인터
 } Student;
 
@@ -86,13 +86,10 @@ void deleteStudent() {
     Student* prev = NULL;
 
     while (curr != NULL) {
-        if (curr->id == targetId) {
-            // 삭제 대상 찾음
-            if (prev == NULL) {
-                // 삭제할 노드가 첫 번째 노드인 경우
+        if (curr->id == targetId) { // 삭제 대상 찾음
+            if (prev == NULL) { // 삭제할 노드가 첫 번째 노드인 경우
                 head = curr->next;
-            } else {
-                // 중간이나 끝 노드인 경우 - 이전 노드의 next를 현재 노드의 다음으로 연결
+            } else { // 중간이나 끝 노드인 경우 - 이전 노드의 next를 현재 노드의 다음으로 연결
                 prev->next = curr->next;
             }
             free(curr); 메모리 해제
@@ -169,8 +166,8 @@ void freeAll() {
 
     while (curr != NULL) {
         nextNode = curr->next; // 다음 위치 기억
-        free(curr);            // 현재 노드 삭제
-        curr = nextNode;       // 이동
+        free(curr); // 현재 노드 삭제
+        curr = nextNode; // 이동
     }
     head = NULL;
 }
