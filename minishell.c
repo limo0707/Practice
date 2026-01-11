@@ -18,7 +18,7 @@ int main() {
     int arg_count;
 
     printf("--- [My Mini Shell] 시작 ---\n");
-    printf("사용 가능한 명령어 : help, ls, touch [파일명], clear, exit\n\n");
+    printf("사용 가능한 명령어 : help, dir, touch [파일명], cls, exit\n\n");
 
     while (1) {
         print_prompt();
@@ -39,12 +39,16 @@ int main() {
 }
 
 void print_prompt() {
-    char cwd[1024]; // getcwd: 현재 작업 경로를 가져오는 시스템 함수
+    printf("\n"); 
+
+    char cwd[1024];
     if (getcwd(cwd, sizeof(cwd)) != NULL) {
         printf("MyShell@User:%s$ ", cwd);
     } else {
         printf("MyShell$ ");
     }
+
+    fflush(stdout); 
 }
 
 // 입력 함수 - fgets를 사용하여 공백 포함 입력 받기
@@ -74,13 +78,13 @@ void execute_command(char** args, int arg_count) {
 
     if (strcmp(args[0], "help") == 0) {
         printf("--- 도움말 ---\n");
-        printf("ls       : 현재 디렉토리 파일 목록 출력\n");
+        printf("dir         : 현재 디렉토리 파일 목록 출력\n");
         printf("touch [이름]: 빈 파일 생성\n");
-        printf("clear    : 화면 지우기\n");
-        printf("exit     : 쉘 종료\n");
+        printf("cls         : 화면 지우기\n");
+        printf("exit        : 쉘 종료\n");
     }
-    else if (strcmp(args[0], "ls") == 0) {
-        system("ls"); 
+    else if (strcmp(args[0], "dir") == 0) {
+        system("dir /b"); 
     }
     else if (strcmp(args[0], "touch") == 0) {
         if (arg_count < 2) {
@@ -91,15 +95,14 @@ void execute_command(char** args, int arg_count) {
                 printf("파일 '%s'가 생성되었습니다.\n", args[1]);
                 fclose(fp);
             } else {
-                printf("파일 생성 실패!\n");
+                printf("파일 생성 실패\n");
             }
         }
     }
-    else if (strcmp(args[0], "clear") == 0) {
-        system("clear");
+    else if (strcmp(args[0], "cls") == 0) {
+        system("cls");
     }
     else {
-        printf("'%s'은(는) 알 수 없는 명령어입니다. 'help'를 입력해보세요.\n", args[0]);
+        printf("'%s'은(는) 알 수 없는 명령어입니다. 다시 입력해주세요.\n", args[0]);
     }
 }
-
