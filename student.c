@@ -92,7 +92,7 @@ void deleteStudent() {
             } else { // 중간이나 끝 노드인 경우 - 이전 노드의 next를 현재 노드의 다음으로 연결
                 prev->next = curr->next;
             }
-            free(curr); 메모리 해제
+            free(curr); // 메모리 해제
             printf(">> 학번 %d 학생 정보를 삭제했습니다.\n", targetId);
             return;
         }
